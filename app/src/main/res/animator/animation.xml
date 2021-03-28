@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- By Anju Kumari on Stack Overflow
+https://stackoverflow.com/questions/61249638/drawing-a-progress-animation-in-custom-viewbutton-using-canvas-in-android -->
+
+
+<animator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="500"
+    android:interpolator="@android:anim/accelerate_decelerate_interpolator"
+    android:valueFrom="0f"
+    android:valueTo="100f"
+    android:valueType="floatType" />
