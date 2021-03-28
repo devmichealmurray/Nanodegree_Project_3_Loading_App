@@ -7,9 +7,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.udacity.DetailActivity
 import com.udacity.NOTIFICATION_CHANNEL_ID
 import com.udacity.R
+import com.udacity.ui.DetailActivity
 
 object NotificationHelper {
 

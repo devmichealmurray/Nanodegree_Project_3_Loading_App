@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/detail_motion_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="18dp"
-            tools:context=".DetailActivity">
+            app:layoutDescription="@xml/activity_detail_scene">
 
             <TextView
                 android:id="@+id/file_name_header"
@@ -16,10 +16,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="54dp"
                 android:gravity="center"
-                android:text="File Name:"
-                android:textSize="24sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/file_name_textView"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:text="@string/file_name"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/file_name_textView"
@@ -29,9 +27,6 @@
                 android:gravity="center"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/file_name_header"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:text="@string/loadApp_radio_button_text" />
 
             <TextView
@@ -40,23 +35,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
                 android:gravity="center"
-                android:text="Status:"
-                android:textSize="24sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/status_textView"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:text="@string/status"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/status_textView"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="44dp"
                 android:gravity="center"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/status_header"
-                app:layout_constraintTop_toBottomOf="@id/file_name_textView"
                 tools:text="Fail" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/okay_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:text="@string/okay_button"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
 
 </layout>

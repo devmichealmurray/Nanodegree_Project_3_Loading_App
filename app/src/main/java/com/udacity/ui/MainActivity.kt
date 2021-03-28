@@ -1,4 +1,4 @@
-package com.udacity
+package com.udacity.ui
 
 import android.app.DownloadManager
 import android.content.BroadcastReceiver
@@ -11,16 +11,13 @@ import android.os.Bundle
 import android.os.Environment
 import android.widget.RadioButton
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
+import com.udacity.R
 import com.udacity.databinding.ActivityMainBinding
 import com.udacity.util.Constants
 import com.udacity.util.NotificationHelper
-
-
-private const val TAG = "Main Activity"
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,10 +25,6 @@ class MainActivity : AppCompatActivity() {
     private var downloadFileName = "filename"
 
     private lateinit var binding: ActivityMainBinding
-    private var isDownloading: Boolean = false
-
-    private val viewModel: MainViewModel by viewModels()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +33,12 @@ class MainActivity : AppCompatActivity() {
         checkPermissions()
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
         binding.loadingButton.setOnClickListener { radioGroup() }
-
     }
+
+
+    /**
+     *  Download and Broadcast Receiver
+     */
 
     private fun download(url: String) {
         val request =
@@ -63,8 +60,7 @@ class MainActivity : AppCompatActivity() {
 
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
-            binding.loadingButton.hasCompletedDownload()
-            isDownloading = false
+
             val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
             val downloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
             val cursor =
@@ -76,12 +72,12 @@ class MainActivity : AppCompatActivity() {
                 if (status == DownloadManager.STATUS_SUCCESSFUL) {
                     context?.let {
                         NotificationHelper
-                            .sendNotification(it, downloadFileName, "SUCCESS!")
+                            .sendNotification(it, downloadFileName, Constants.SUCCESS)
                     }
                 } else {
                     context?.let {
                         NotificationHelper
-                            .sendNotification(it, downloadFileName, "FAILED")
+                            .sendNotification(it, downloadFileName, Constants.FAILED)
                     }
                 }
 
@@ -91,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
 
     /**
-     *  Finish the permissions functions
+     *  Permissions Check is not exhaustive -- Only added to check that files are downloading
      */
 
     private fun checkPermissions() {
@@ -99,7 +95,6 @@ class MainActivity : AppCompatActivity() {
             != PackageManager.PERMISSION_GRANTED
         ) {
             requestPermissions()
-
         }
 
     }

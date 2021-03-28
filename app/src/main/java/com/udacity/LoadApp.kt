@@ -12,4 +12,5 @@ class LoadApp: Application() {
 
         NotificationHelper.createNotificationChannel(NOTIFICATION_CHANNEL_ID, this)
     }
+
 }
