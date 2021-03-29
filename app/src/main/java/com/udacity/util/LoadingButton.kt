@@ -10,11 +10,6 @@ import androidx.core.content.ContextCompat
 import com.udacity.R
 import kotlin.properties.Delegates
 
-/**
- *  By Anju Kumari on Stack Overflow
- * https://stackoverflow.com/questions/61249638/drawing-a-progress-animation-in-custom-viewbutton-using-canvas-in-android
- */
-
 class LoadingButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
